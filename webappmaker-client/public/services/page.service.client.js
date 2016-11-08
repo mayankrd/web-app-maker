@@ -1,14 +1,16 @@
 /**
  * Created by: Mayank
+ * Client service for Pages view
+ * Registered app by Angular module name WebAppMaker
  */
 
 (function (){
     angular
-        .module("WebAppMaker")  // WebAppMaker is the name of the declared app for Angular
+        .module("WebAppMaker") // Registered app by Angular module name WebAppMaker
         .factory("PageService", PageService)
 
-    function PageService($http){
-
+    function PageService($http)
+    {
         // data array
         var pages =  [
             { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
@@ -50,7 +52,8 @@
         }
 
         // returns the Page details by fetching data from Pages data as per input pageId
-        function findPageById(pageId) {
+        function findPageById(pageId)
+        {
             console.log(pageId);
             for (var p in pages) {
                 page = pages[p];
@@ -65,7 +68,8 @@
         }
 
         // updates the current data for the page corresponding pageId
-        function updatePage(pageId, page) {
+        function updatePage(pageId, page)
+        {
             var pageIndex = findPageIndexById(pageId);
             if(pageIndex === -1)
             {
@@ -79,7 +83,8 @@
         }
 
         // deletes the data from pages array corresponding to pageId
-        function deletePage(pageId) {
+        function deletePage(pageId)
+        {
             var pageIndex = findPageIndexById(pageId);
             if(pageIndex === -1)
             {
@@ -92,16 +97,21 @@
             }
         }
 
-        // auxiliary functions
+        /**
+         * auxiliary functions for the page client service
+         */
+
         // returns a random integer between min and max
-        function getRandomInt(min, max) {
+        function getRandomInt(min, max)
+        {
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min)) + min;
         }
 
         // returns a page's index in pages array as per the input pageId
-        function findPageIndexById(pageId) {
+        function findPageIndexById(pageId)
+        {
             for(var i = 0; i < pages.length; i++)
             {
                 if( pages[i]._id === pageId)
