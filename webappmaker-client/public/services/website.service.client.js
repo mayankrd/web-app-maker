@@ -1,11 +1,19 @@
-(function (){
+/**
+ * Created by: Mayank
+ * Client service for Website views
+ * Registered app by Angular module name WebAppMaker
+ */
+
+(function () {
     angular
-        .module("WebAppMaker")
+        .module("WebAppMaker") // Registered app by Angular module name WebAppMaker
         .factory("WebsiteService", WebsiteService)
 
-    function WebsiteService($http){
-
-        var websites =   [
+    function WebsiteService($http)
+    {
+        // data array containing information about the websites which users hold
+        var websites =
+        [
             { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
             { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
             { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
@@ -15,7 +23,9 @@
             { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
         ];
 
-        var api = {
+        // api to 'website' view controllers
+        var api =
+        {
             createWebsite: createWebsite,
             findWebsitesByUser: findWebsitesByUser,
             findWebsiteById: findWebsiteById,
@@ -25,26 +35,14 @@
 
         return api;
 
+        // function to create a new website, the new website is added to Websites data
         function createWebsite(userId, website)
         {
             var url = '/api/user/'+userId+'/website';
             return $http.post(url, website);
-
-            /*website.developerId = userId;
-            var newWid;
-            do {
-                newWid = getRandomInt(0, 1000).toString();
-                if (findWebsiteById(newWid) === null)
-                {
-                    website._id = newWid;
-                    websites.push(website);
-                    for(i = 0; i < websites.length; i++)
-                        console.log(websites[i]);
-                    return website;
-                }
-            }while(1);*/
         }
 
+        // returns the websites for the matching userId in the data
         function findWebsitesByUser(userId)
         {
             var url = '/api/user/'+userId+'/website';
@@ -52,72 +50,27 @@
 
         }
 
+        // returns the website for the matching websiteId
         function findWebsiteById(websiteId)
         {
             var url = '/api/website/'+websiteId;
             return $http.get(url);
-
-            /*
-            console.log(websiteId);
-            for (var w in websites) {
-                website = websites[w];
-                console.log(website);
-                if(parseInt(website._id) === parseInt(websiteId)) {
-                    return website;
-                }
-            }
-            return null;*/
         }
 
+        // updates the websites data for the input websiteId
         function updateWebsite(websiteId, website)
         {
             var url = '/api/website/'+websiteId;
             return $http.put(url, website);
-
-           /* var webIndex = findWebIndexById(websiteId);
-            if( webIndex === -1)
-            {
-                return null;
-            }
-            else
-            {
-                websites[webIndex] = website;
-                return websites[webIndex];
-            }*/
         }
 
+        // deletes the website from the Websites array for the matching websiteId
         function deleteWebsite(websiteId)
         {
             var url = '/api/website/'+websiteId;
             return $http.delete(url);
-
-
-           /* var webIndex = findWebIndexById(websiteId);
-            if(webIndex === -1)
-            {
-                return false;
-            }
-            else
-            {
-                websites.splice(webIndex, 1);
-                return true;
-            }*/
         }
 
-        /*function findWebIndexById(websiteId) {
-            for(var i = 0; i < websites.length; i++)
-            {
-                if( websites[i]._id === websiteId)
-                    return i;
-            }
-            return -1;
-        }
-
-        function getRandomInt(min, max) {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min)) + min;
-        }*/
     }
 
 })();

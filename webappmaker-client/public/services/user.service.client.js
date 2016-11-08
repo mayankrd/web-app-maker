@@ -12,15 +12,18 @@
     // forming REST Request using Express $http
     function UserService($http)
     {
-        var users =   [
-                        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-                        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-                        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-                        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-                    ];
+        // data array for Users of the applications
+        var users =
+        [
+           {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
+           {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
+           {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
+           {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
+        ];
 
-        // api to User controllers
-        var api = {
+        // api to 'user' view controllers
+        var api =
+        {
             findUsersByCredentials: findUserByCredentials,
             createUser: createUser,
             findUserById: findUserById,
@@ -74,7 +77,6 @@
             //todo
         }
 
-
         /**
          * auxiliary functions for the user client service
          */
@@ -97,7 +99,6 @@
             }
             return -1;
         }
-
     }
 
 })();
