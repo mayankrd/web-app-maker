@@ -1,0 +1,80 @@
+<nav class="navbar navbar-default navbar-fixed-top navbar-page-pages">
+    <div class="container-fluid">
+        <div class="navbar-header complete-width">
+
+            <p class="navbar-text pull-left ">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left glyphicon-chevron-left-pages-page"> </span>
+                </a>
+            </p>
+
+            <a class="navbar-brand" id="navbar-text-page-pages" href="#">
+                Widget Edit
+            </a>
+
+            <p class="navbar-text pull-right ">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok glyphicon-plus-pages-page"> </span>
+                </a>
+            </p>
+
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <form>
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name">
+        </div>
+
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input type="text" class="form-control" id="text" placeholder="Widget text">
+        </div>
+
+        <div class="form-group">
+            <label for="size">Size</label>
+            <input type="text" class="form-control" id="size" placeholder="Widget text">
+        </div>
+
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="text" class="form-control" id="url" placeholder="https://www.youtube.com/watch?v=WD0eofKKH4c">
+        </div>
+
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input type="text" class="form-control" id="width" placeholder="100%">
+        </div>
+
+        <div class="form-group">
+            <label for="inputFile">Upload</label>
+            <input type="file" id="inputFile" class="form-control">
+        </div>
+
+        <a class="btn btn-primary btn-block"
+           href="#">Upload Image</a>
+
+        <a class="btn btn-danger  btn-block"
+           href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Delete</a>
+
+    </form>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom navbar-page-pages">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+
+            <p class="navbar-text pull-right">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
+                    <span class="glyphicon glyphicon-user glyphicon-user-page-pages pull-right"> </span>
+                </a>
+            </p>
+
+        </div>
+    </div>
+</nav>
