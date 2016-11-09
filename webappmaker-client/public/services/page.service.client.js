@@ -7,7 +7,7 @@
 (function (){
     angular
         .module("WebAppMaker") // Registered app by Angular module name WebAppMaker
-        .factory("PageService", PageService)
+        .factory("PageService", PageService);
 
     function PageService($http)
     {

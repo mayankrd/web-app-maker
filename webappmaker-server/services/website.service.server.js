@@ -1,10 +1,15 @@
 /**
- * Created by mayank on 11/5/16.
+ * Created by: Mayank on 11/5/16
+ * Client service for User views
+ * Registered app by Angular module name WebAppMaker
+ * Using REST architecture
  */
 
-module.exports = function(app) {
-
-    var websites =   [
+module.exports = function(app)
+{
+    // data array for website services
+    var websites =
+    [
         { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
         { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
         { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
@@ -14,7 +19,7 @@ module.exports = function(app) {
         { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
     ];
 
-
+    // URL patterns for REST Website web services
     app.post("/api/user/:userId/website", createWebsite);
     app.get("/api/user/:userId/website", findAllWebsitesForUser);
     app.get("/api/website/:websiteId", findWebsiteById);
@@ -22,12 +27,14 @@ module.exports = function(app) {
     app.delete("/api/website/:websiteId", deleteWebsite);
 
 
+    // creates a new website as per the details provided in request body
     function createWebsite(req, res)
     {
         var newWid;
         var website = req.body;
         website.developerId = req.params.userId;
 
+        // todo to analyze the website id generation
         /*do {
             newWid = getRandomInt(0, 1000).toString();
             existingWid = function () {
@@ -57,6 +64,7 @@ module.exports = function(app) {
         res.json(websites);
     }
 
+    // returns the array websites corresponding to the user
     function findAllWebsitesForUser(req, res)
     {
         var uid = req.params.userId;
@@ -69,6 +77,7 @@ module.exports = function(app) {
         res.json(result);
     }
 
+    // returns the website as per the websiteId from request URL
     function findWebsiteById(req, res)
     {
         var wid = req.params.websiteId;
@@ -83,6 +92,7 @@ module.exports = function(app) {
         res.send('0');
     }
 
+    // updates the website as per data present in request body
     function updateWebsite(req, res)
     {
         var wid = req.params.websiteId;
@@ -91,16 +101,17 @@ module.exports = function(app) {
         if( webIndex === -1)
         {
             res.send('0');
-            return;
+
         }
         else
         {
             websites[webIndex] = website;
             res.json(websites[webIndex]);
-            return;
+
         }
     }
 
+    // deletes a website as per the websiteId in request URL
     function deleteWebsite(req, res)
     {
         var wid = req.params.websiteId;
@@ -108,20 +119,23 @@ module.exports = function(app) {
         if(webIndex === -1)
         {
             res.send('0');
-            return;
+
         }
         else
         {
             websites.splice(webIndex, 1);
             res.send(200);
-            return;
+
         }
     }
 
+    /**
+     * auxiliary functions for the page client service
+     */
 
-    // auxiliary functions
-
-    function findWebIndexById(websiteId) {
+    // returns the website by its index in data array
+    function findWebIndexById(websiteId)
+    {
         for(var i = 0; i < websites.length; i++)
         {
             if( websites[i]._id === websiteId)
@@ -130,11 +144,12 @@ module.exports = function(app) {
         return -1;
     }
 
-    function getRandomInt(min, max) {
+    // returns a random integer between min and max
+    function getRandomInt(min, max)
+    {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
     }
-
 
 };

@@ -57,7 +57,7 @@
                     $location.url("/user/" + updatedUser._id);
                 }
             });
-        };
+        }
     }
 
     function ProfileController($routeParams, $location, UserService)
@@ -103,7 +103,6 @@
             console.log(user);
             //$location.url("/user/" + vm.userId + "/website");
         }*/
-    };
-
+    }
 })();
 

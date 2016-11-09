@@ -7,7 +7,7 @@
 (function (){
     angular
         .module("WebAppMaker") // Registered app by Angular module name WebAppMaker
-        .factory("UserService", UserService)
+        .factory("UserService", UserService);
 
     // forming REST Request using Express $http
     function UserService($http)

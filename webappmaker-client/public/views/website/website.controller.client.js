@@ -148,7 +148,7 @@
             function createWebsite(website)
             {
                 WebsiteService.createWebsite(vm.userId, website);
-                console.log("website created !")
+                console.log("website created !");
                 $location.url("/user/" + vm.userId + "/website");
             }
         }
